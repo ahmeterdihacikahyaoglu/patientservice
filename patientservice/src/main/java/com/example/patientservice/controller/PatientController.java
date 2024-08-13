@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -49,5 +50,28 @@ public class PatientController {
     public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
         patientService.deletePatient(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/searchByFirstName")
+    public List<Patient> searchPatientsByFirstName(@RequestParam String firstName) {
+        return patientService.findPatientsByFirstName(firstName);
+    }
+
+    @GetMapping("/searchByLastName")
+    public List<Patient> searchPatientsByLastName(@RequestParam String lastName) {
+        return patientService.findPatientsByLastName(lastName);
+    }
+
+    @GetMapping("/searchByGender")
+    public List<Patient> searchPatientsByGender(@RequestParam String gender) {
+        return patientService.findPatientsByGender(gender);
+    }
+
+    @GetMapping("/searchByAgeRange")
+    public List<Patient> searchPatientsByAgeRange(@RequestParam int minAge, @RequestParam int maxAge) {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate startDate = currentDate.minusYears(maxAge);
+        LocalDate endDate = currentDate.minusYears(minAge);
+        return patientService.findPatientsByBirthDateBetween(startDate, endDate);
     }
 }

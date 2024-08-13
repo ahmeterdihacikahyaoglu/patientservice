@@ -5,6 +5,7 @@ import com.example.patientservice.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -41,5 +42,21 @@ public class PatientService {
 
     public void deletePatient(Long id) {
         patientRepository.deleteById(id);
+    }
+
+    public List<Patient> findPatientsByFirstName(String firstName) {
+        return patientRepository.findByFirstName(firstName);
+    }
+
+    public List<Patient> findPatientsByLastName(String lastName) {
+        return patientRepository.findByLastName(lastName);
+    }
+
+    public List<Patient> findPatientsByGender(String gender) {
+        return patientRepository.findByGender(gender);
+    }
+
+    public List<Patient> findPatientsByBirthDateBetween(LocalDate startDate, LocalDate endDate) {
+        return patientRepository.findByBirthDateBetween(startDate, endDate);
     }
 }
