@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "d5b5aac1-b51e-47e7-b693-81c4188bceb7",
+		"name": "Patient Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24077587"
+	},
+	"item": [
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/patients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/patients/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"patients",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Bob\",\r\n  \"lastName\": \"Marley\",\r\n  \"birthDate\": \"1983-11-11\",\r\n  \"gender\": \"Male\",\r\n  \"identifiers\": [\"TCKN424555\", \"Passport666\"],\r\n  \"contacts\": [\"bob.marley@example.com\", \"+9983776655\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/patients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Jane\",\r\n  \"lastName\": \"Doe\",\r\n  \"birthDate\": \"1990-01-01\",\r\n  \"gender\": \"Female\",\r\n  \"identifiers\": [\"TCKN654321\", \"Passport987\"],\r\n  \"contacts\": [\"jane.doe@example.com\", \"+987654321\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/patients/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"patients",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/patients/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"patients",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search By Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/patients/searchByFirstName?firstName=Jane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"patients",
+						"searchByFirstName"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "Jane"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search By LastName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/patients/searchByLastName?lastName=Doe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"patients",
+						"searchByLastName"
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": "Doe"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search By Gender",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/patients/searchByGender?gender=Female",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"patients",
+						"searchByGender"
+					],
+					"query": [
+						{
+							"key": "gender",
+							"value": "Female"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search By Age",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/patients/searchByAgeRange?minAge=30&maxAge=40",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"patients",
+						"searchByAgeRange"
+					],
+					"query": [
+						{
+							"key": "minAge",
+							"value": "30"
+						},
+						{
+							"key": "maxAge",
+							"value": "40"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
