@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +31,7 @@ class PatientServiceTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
         patient = new Patient(1L, "John", "Doe", LocalDate.of(1990, 1, 1), "Male",
-                Arrays.asList("TCKN123456"), Arrays.asList("john.doe@example.com"), 1);
+                List.of("TCKN123456"), List.of("john.doe@example.com"), 1);
     }
 
     @Test
@@ -41,9 +40,9 @@ class PatientServiceTest {
 
         Patient foundPatient = patientService.getPatientById(1L);
 
-        assertEquals("John", foundPatient.getFirstName());
-        assertEquals("Doe", foundPatient.getLastName());
-        assertEquals("Male", foundPatient.getGender());
+        assertEquals(patient.getFirstName(), foundPatient.getFirstName());
+        assertEquals(patient.getLastName(), foundPatient.getLastName());
+        assertEquals(patient.getGender(), foundPatient.getGender());
         verify(patientRepository, times(1)).findById(1L);
     }
 
@@ -53,14 +52,14 @@ class PatientServiceTest {
 
         Patient createdPatient = patientService.createPatient(patient);
 
-        assertEquals("John", createdPatient.getFirstName());
-        assertEquals("Doe", createdPatient.getLastName());
+        assertEquals(patient.getFirstName(), createdPatient.getFirstName());
+        assertEquals(patient.getLastName(), createdPatient.getLastName());
         verify(patientRepository, times(1)).save(patient);
     }
 
     @Test
     void testGetAllPatients() {
-        List<Patient> patients = Arrays.asList(patient);
+        List<Patient> patients = List.of(patient);
         when(patientRepository.findAll()).thenReturn(patients);
 
         List<Patient> allPatients = patientService.getAllPatients();
@@ -75,12 +74,12 @@ class PatientServiceTest {
         when(patientRepository.save(any(Patient.class))).thenReturn(patient);
 
         Patient updatedPatient = new Patient(1L, "Jane", "Doe", LocalDate.of(1990, 1, 1), "Female",
-                Arrays.asList("TCKN654321"), Arrays.asList("jane.doe@example.com"), 1);
+                List.of("TCKN654321"), List.of("jane.doe@example.com"), 1);
 
         Patient result = patientService.updatePatient(1L, updatedPatient);
 
-        assertEquals("Jane", result.getFirstName());
-        assertEquals("Doe", result.getLastName());
+        assertEquals(updatedPatient.getFirstName(), result.getFirstName());
+        assertEquals(updatedPatient.getLastName(), result.getLastName());
         verify(patientRepository, times(1)).save(patient);
     }
 
