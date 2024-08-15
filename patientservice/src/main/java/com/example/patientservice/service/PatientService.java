@@ -59,4 +59,5 @@ public class PatientService {
     public List<Patient> findPatientsByBirthDateBetween(LocalDate startDate, LocalDate endDate) {
         return patientRepository.findByBirthDateBetween(startDate, endDate);
     }
+
 }
