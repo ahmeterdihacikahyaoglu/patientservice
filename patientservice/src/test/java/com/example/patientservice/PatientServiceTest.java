@@ -2,6 +2,7 @@ package com.example.patientservice;
 
 import com.example.patientservice.model.Patient;
 import com.example.patientservice.repository.PatientRepository;
+import com.example.patientservice.service.PatientService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
